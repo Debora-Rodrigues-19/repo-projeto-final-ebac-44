@@ -47,14 +47,12 @@ O pipeline é dividido em três etapas principais:
 - **Processamento dos Dados**: Uso de **script Python** para processar e transformar os arquivos JSON, armazenados na camada "raw", no formato **Parquet**.  
 - **Armazenamento Enriquecido**: Armazenamento dos dados transformados no formato Parquet na camada "enriched" de um bucket **S3** (`s3://debora-ebac-modulo-44-enriched`).  
 - **Orquestração**: Gerenciamento desse processo por meio de uma **task encadeada** no Airflow, garantindo uma execução fluida e automatizada.
-
-- Função Lambda para processar os dados: [🔗 Código Lambda](#)
   
     - Bucket dos dados enriquecidos:
       ![bucket enriched](https://raw.githubusercontent.com/Debora-Rodrigues-19/repo-projeto-final-ebac-44/refs/heads/main/bucket-enriched-ebac-44.png)
       ![enriched bucket](https://raw.githubusercontent.com/Debora-Rodrigues-19/repo-projeto-final-ebac-44/refs/heads/main/enriched-telegram-ebac-44.png)
 
-- Link do código do ETL: [🔗 Código ETL](https://github.com/Debora-Rodrigues-19/repo-projeto-final-ebac-44/blob/main/scripy_etl.py)
+- Função Lambda para processar os dados: [🔗 Código ETL-Lambda](https://github.com/Debora-Rodrigues-19/repo-projeto-final-ebac-44/blob/main/scripy_etl.py)
 
 ---
 
