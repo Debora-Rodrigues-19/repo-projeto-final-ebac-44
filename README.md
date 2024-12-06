@@ -24,10 +24,18 @@ O pipeline é dividido em três etapas principais:
 
 - Link do código da API para capturar as mensagens e salvá-las no bucket: [🔗 Código API](#)  
 
-- 🗂️ Exemplos dos Dados Armazenados:  
+- 🗂️ Amostra dos dados e arquivos Armazenados:
+   - Acesso ao bot do telegram:
+     ![acesso bot telegram]()
+     
+   - Bucket Raw e seus arquivos:
+     ![telegram bucket raw]() 
+     ![arquivo bucket raw]()
+     
    - Mensagens coletadas são salvas no formato JSON:  
-     ![Mensagens salvas](https://github.com/user-attachments/assets/74826335-edcc-4e2c-ad70-3956cfb41af9)  
-   - Exemplo de JSON capturado:  
+     ![Mensagens salvas](https://github.com/user-attachments/assets/74826335-edcc-4e2c-ad70-3956cfb41af9)
+      
+   - Exemplo de JSON capturado:
      ![Exemplo JSON](https://github.com/user-attachments/assets/8e92efe5-a186-4d23-a84e-84addebeaa67)
 
 ---
@@ -38,7 +46,9 @@ O pipeline é dividido em três etapas principais:
 - **Armazenamento Enriquecido**: Armazenamento dos dados transformados no formato Parquet na camada "enriched" de um bucket **S3** (`s3://debora-ebac-modulo-44-enriched`).  
 - **Orquestração**: Gerenciamento desse processo por meio de uma **task encadeada** no Airflow, garantindo uma execução fluida e automatizada.
 
-- Função Lambda para processar os dados: [🔗 Código Lambda](#)  
+- Função Lambda para processar os dados: [🔗 Código Lambda](#)
+    - Bucket dos dados enriquecidos:
+      ![bucket enriched]()
 
 ---
 
@@ -47,11 +57,28 @@ O pipeline é dividido em três etapas principais:
 - **Criação da Tabela no Athena**: Uso do **AWS Athena** para criar uma tabela chamada **telegram**, permitindo consultas SQL diretamente sobre os dados estruturados no bucket "enriched".  
 - **Geração de Resultados**: Execução de queries no Athena para gerar resultados e insights, armazenados na pasta `athena-query-results` dentro do bucket enriquecido.  
 
+
+   - Athena query results:
+     ![athena query results]()
+     
+   - Athena consultas sql:
+     ![consulta sql]()
+
+   - Athena query results:
+     ![count by day]()
+
+   - Athena query results:
+     ![mensagem by user by day]()
+
+
+     tamanho-mensagem-by-user-by-day-ebac-44.png
+     
+
 ---
 
 ### **Orquestração com Airflow**  
 Para gerenciar todo o pipeline, utilizamos o **Apache Airflow**, uma ferramenta consolidada no ecossistema de Big Data.  
 
-Abaixo, um exemplo de como o pipeline ficou representado no Airflow:  
-📸 _[Insira o print do pipeline aqui]_  
+   - Pipeline no airflow
+     ![imagem pipeline airflow]()  
 
