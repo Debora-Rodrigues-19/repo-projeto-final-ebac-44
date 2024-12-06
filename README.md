@@ -22,11 +22,12 @@ O pipeline é dividido em três etapas principais:
 - **Captura de Mensagens**: A API é responsável por coletar as mensagens enviadas ao bot do Telegram.  
 - **Armazenamento**: As mensagens capturadas são armazenadas no formato **JSON** na camada "raw" de um bucket S3 (`s3://debora-ebac-modulo-44-raw`).
 
-- Link do código da API para capturar as mensagens e salvá-las no bucket: [🔗 Código API](#)  
+- Link do código da API para capturar as mensagens e salvá-las no bucket: [🔗 Código API](https://github.com/Debora-Rodrigues-19/repo-projeto-final-ebac-44/blob/main/app%20(1).py)  
 
 - 🗂️ Amostra dos dados e arquivos Armazenados:
    - Acesso ao bot do telegram:
      ![acesso bot telegram](https://raw.githubusercontent.com/Debora-Rodrigues-19/repo-projeto-final-ebac-44/refs/heads/main/acesso-bot-telegram-ebac-44.png)
+     
      ![imagem](https://raw.githubusercontent.com/Debora-Rodrigues-19/repo-projeto-final-ebac-44/refs/heads/main/getme-bot-ebac-44.png)
      
    - Bucket Raw e seus arquivos:
@@ -50,9 +51,10 @@ O pipeline é dividido em três etapas principais:
 - Função Lambda para processar os dados: [🔗 Código Lambda](#)
   
     - Bucket dos dados enriquecidos:
-      ![bucket enriched](https://raw.githubusercontent.com/Debora-Rodrigues-19/repo-projeto-final-ebac-44/refs/heads/main/bucket-enriched-ebac-44.png
+      ![bucket enriched](https://raw.githubusercontent.com/Debora-Rodrigues-19/repo-projeto-final-ebac-44/refs/heads/main/bucket-enriched-ebac-44.png)
       ![enriched bucket](https://raw.githubusercontent.com/Debora-Rodrigues-19/repo-projeto-final-ebac-44/refs/heads/main/enriched-telegram-ebac-44.png)
 
+- Link do código do ETL: [🔗 Código ETL](https://github.com/Debora-Rodrigues-19/repo-projeto-final-ebac-44/blob/main/scripy_etl.py)
 
 ---
 
@@ -61,6 +63,7 @@ O pipeline é dividido em três etapas principais:
 - **Criação da Tabela no Athena**: Uso do **AWS Athena** para criar uma tabela chamada **telegram**, permitindo consultas SQL diretamente sobre os dados estruturados no bucket "enriched".  
 - **Geração de Resultados**: Execução de queries no Athena para gerar resultados e insights, armazenados na pasta `athena-query-results` dentro do bucket enriquecido.  
 
+- Link do código do Athena: [🔗 Código Athena](https://github.com/Debora-Rodrigues-19/repo-projeto-final-ebac-44/blob/main/script_sql_athena.py)
 
    - Bucket dos resultados das consultas do Athena, no bucket S3:
      ![athena query results](https://raw.githubusercontent.com/Debora-Rodrigues-19/repo-projeto-final-ebac-44/refs/heads/main/athena-query-results-ebac-44.png)
@@ -76,12 +79,15 @@ O pipeline é dividido em três etapas principais:
 
    - Tamanho das mensagens recebidas, por dia e por usuário:
      ![tamanho mensagem](https://raw.githubusercontent.com/Debora-Rodrigues-19/repo-projeto-final-ebac-44/refs/heads/main/tamanho-mensagem-by-user-by-day-ebac-44.png)
-     
+
+     - Arquivo com os SQL que usei no Athena:[🔗 Arquivo com as consultas em SQL](https://github.com/Debora-Rodrigues-19/repo-projeto-final-ebac-44/blob/main/modulo_44_colab_material_da_aula.py) 
 
 ---
 
 ### **Orquestração com Airflow**  
 Para gerenciar todo o pipeline, utilizamos o **Apache Airflow**, uma ferramenta consolidada no ecossistema de Big Data.  
+
+- Link do código do Pipeline no Airflow: [🔗 Código Pipeline Airflow](https://github.com/Debora-Rodrigues-19/repo-projeto-final-ebac-44/blob/main/pipeline_ebac_44.py)
 
    - Pipeline no airflow
      ![imagem pipeline airflow](https://raw.githubusercontent.com/Debora-Rodrigues-19/repo-projeto-final-ebac-44/refs/heads/main/pipeline-airflow-ebac-44.png)  
