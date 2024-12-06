@@ -1,32 +1,57 @@
-# Pipeline de Dados do Telegram
+# 🚀 **Pipeline de Dados do Telegram**  
 
-Este projeto implementa um pipeline de dados que integra mensagens do Telegram com serviços da AWS, incluindo S3, Lambda, API Gateway, Athena e AirFlow. 
+Este projeto implementa um pipeline de dados robusto que integra mensagens enviadas ao bot do Telegram com diversos serviços da AWS, incluindo **S3**, **Lambda**, **API Gateway**, **Athena** e **Airflow**.  
 
-O objetivo é criar um pipeline orientado a eventos agendados realizar a ingestão, transformação e apresentação dos dados de mensagens enviadas ao bot do Telegram.
+O objetivo é criar um pipeline orientado a eventos e agendado, capaz de realizar a ingestão, transformação e análise de mensagens enviadas ao bot.  
 
-## Arquitetura do Pipeline
+---
+## 🏗️ **Arquitetura do Pipeline**  
+![Arquitetura do Pipeline](https://github.com/Debora-Rodrigues-19/repo-projeto-final-ebac-44/blob/main/arquitetura-ebac-44.jpeg?raw=true)  
 
-![Arquitetura do Pipeline](https://github.com/Debora-Rodrigues-19/repo-projeto-final-ebac-44/blob/main/arquitetura-ebac-44.jpeg?raw=true)
+---
+O pipeline é dividido em três etapas principais:  
+1. **Ingestão**  
+2. **Transformação (ETL)**  
+3. **Análises**  
+---
 
-O pipeline é dividido em três etapas principais: Ingestão, Transformação e Apresentação.
+## 1️⃣ **Ingestão**  
+ 
+- **Integração com o Telegram**: Foi criada uma API utilizando **AWS Lambda** e **API Gateway** para integrar com a API REST do Telegram.  
+- **Agendamento**: Configuração de uma **DAG no Airflow** para acionar a API em micro-batches a cada **2 minutos**.  
+- **Captura de Mensagens**: A API é responsável por coletar as mensagens enviadas ao bot do Telegram.  
+- **Armazenamento**: As mensagens capturadas são armazenadas no formato **JSON** na camada "raw" de um bucket S3 (`s3://debora-ebac-modulo-44-raw`).
 
+- Link do código da API para capturar as mensagens e salvá-las no bucket: [🔗 Código API](#)  
 
-1. **Ingestão**:
-   - Mensagens do bot do Telegram que são capturadas via API e armazenadas no formato JSON em um bucket S3 com a camada "raw".
-2. **Transformação (ETL)**:
-   - Dados JSON são transformados em formato Parquet e armazenados em outro bucket S3 com a camada "enriched" para análise.
-3. **Apresentação**:
-   - Os dados enriquecidos são consultados usando AWS Athena com SQL.
-  
-## 1. Etapa de Ingestão 
-As mensagens serão captadas as por um bot podem ser acessadas via API, no formato JSON. 
-Através do API Gateway que foi acessado pelo AWS CLI no terminal.
-Com o seguinte código: XXX 
+- 🗂️ Exemplos dos Dados Armazenados:  
+   - Mensagens coletadas são salvas no formato JSON:  
+     ![Mensagens salvas](https://github.com/user-attachments/assets/74826335-edcc-4e2c-ad70-3956cfb41af9)  
+   - Exemplo de JSON capturado:  
+     ![Exemplo JSON](https://github.com/user-attachments/assets/8e92efe5-a186-4d23-a84e-84addebeaa67)
 
+---
 
+## 2️⃣ **Transformação (ETL)**  
 
-### 1. Bucket AWS S3
-- s3://debora-ebac-modulo-44-raw
-- s3://debora-ebac-modulo-44-enriched
+- **Processamento dos Dados**: Uso de **script Python** para processar e transformar os arquivos JSON, armazenados na camada "raw", no formato **Parquet**.  
+- **Armazenamento Enriquecido**: Armazenamento dos dados transformados no formato Parquet na camada "enriched" de um bucket **S3** (`s3://debora-ebac-modulo-44-enriched`).  
+- **Orquestração**: Gerenciamento desse processo por meio de uma **task encadeada** no Airflow, garantindo uma execução fluida e automatizada.
 
+- Função Lambda para processar os dados: [🔗 Código Lambda](#)  
+
+---
+
+### 3️⃣ **Análises**  
+
+- **Criação da Tabela no Athena**: Uso do **AWS Athena** para criar uma tabela chamada **telegram**, permitindo consultas SQL diretamente sobre os dados estruturados no bucket "enriched".  
+- **Geração de Resultados**: Execução de queries no Athena para gerar resultados e insights, armazenados na pasta `athena-query-results` dentro do bucket enriquecido.  
+
+---
+
+### **Orquestração com Airflow**  
+Para gerenciar todo o pipeline, utilizamos o **Apache Airflow**, uma ferramenta consolidada no ecossistema de Big Data.  
+
+Abaixo, um exemplo de como o pipeline ficou representado no Airflow:  
+📸 _[Insira o print do pipeline aqui]_  
 
