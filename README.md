@@ -26,11 +26,12 @@ O pipeline é dividido em três etapas principais:
 
 - 🗂️ Amostra dos dados e arquivos Armazenados:
    - Acesso ao bot do telegram:
-     ![acesso bot telegram]()
+     ![acesso bot telegram](https://raw.githubusercontent.com/Debora-Rodrigues-19/repo-projeto-final-ebac-44/refs/heads/main/acesso-bot-telegram-ebac-44.png)
+     ![imagem](https://raw.githubusercontent.com/Debora-Rodrigues-19/repo-projeto-final-ebac-44/refs/heads/main/getme-bot-ebac-44.png)
      
    - Bucket Raw e seus arquivos:
-     ![telegram bucket raw]() 
-     ![arquivo bucket raw]()
+     ![telegram bucket raw](https://raw.githubusercontent.com/Debora-Rodrigues-19/repo-projeto-final-ebac-44/refs/heads/main/telegram-bucket-raw-ebac-44.png) 
+     ![arquivo bucket raw](https://raw.githubusercontent.com/Debora-Rodrigues-19/repo-projeto-final-ebac-44/refs/heads/main/arquivo-bucket-raw-ebac-44.png)
      
    - Mensagens coletadas são salvas no formato JSON:  
      ![Mensagens salvas](https://github.com/user-attachments/assets/74826335-edcc-4e2c-ad70-3956cfb41af9)
@@ -47,8 +48,11 @@ O pipeline é dividido em três etapas principais:
 - **Orquestração**: Gerenciamento desse processo por meio de uma **task encadeada** no Airflow, garantindo uma execução fluida e automatizada.
 
 - Função Lambda para processar os dados: [🔗 Código Lambda](#)
+  
     - Bucket dos dados enriquecidos:
-      ![bucket enriched]()
+      ![bucket enriched](https://raw.githubusercontent.com/Debora-Rodrigues-19/repo-projeto-final-ebac-44/refs/heads/main/bucket-enriched-ebac-44.png
+      ![enriched bucket](https://raw.githubusercontent.com/Debora-Rodrigues-19/repo-projeto-final-ebac-44/refs/heads/main/enriched-telegram-ebac-44.png)
+
 
 ---
 
@@ -58,20 +62,20 @@ O pipeline é dividido em três etapas principais:
 - **Geração de Resultados**: Execução de queries no Athena para gerar resultados e insights, armazenados na pasta `athena-query-results` dentro do bucket enriquecido.  
 
 
-   - Athena query results:
-     ![athena query results]()
+   - Bucket dos resultados das consultas do Athena, no bucket S3:
+     ![athena query results](https://raw.githubusercontent.com/Debora-Rodrigues-19/repo-projeto-final-ebac-44/refs/heads/main/athena-query-results-ebac-44.png)
      
    - Athena consultas sql:
-     ![consulta sql]()
+     ![consulta sql](https://raw.githubusercontent.com/Debora-Rodrigues-19/repo-projeto-final-ebac-44/refs/heads/main/consulta-sql-ebac-44.png)
 
-   - Athena query results:
-     ![count by day]()
+   - Quantidade de mensagens por dia:
+     ![count by day](https://raw.githubusercontent.com/Debora-Rodrigues-19/repo-projeto-final-ebac-44/refs/heads/main/count-by-day.png)
 
-   - Athena query results:
-     ![mensagem by user by day]()
+   - Mensagens por usuário, por dia:
+     ![mensagem by user by day](https://raw.githubusercontent.com/Debora-Rodrigues-19/repo-projeto-final-ebac-44/refs/heads/main/mensagem-by-user-by-day-ebac-44.png)
 
-
-     tamanho-mensagem-by-user-by-day-ebac-44.png
+   - Tamanho das mensagens recebidas, por dia e por usuário:
+     ![tamanho mensagem](https://raw.githubusercontent.com/Debora-Rodrigues-19/repo-projeto-final-ebac-44/refs/heads/main/tamanho-mensagem-by-user-by-day-ebac-44.png)
      
 
 ---
@@ -80,5 +84,5 @@ O pipeline é dividido em três etapas principais:
 Para gerenciar todo o pipeline, utilizamos o **Apache Airflow**, uma ferramenta consolidada no ecossistema de Big Data.  
 
    - Pipeline no airflow
-     ![imagem pipeline airflow]()  
+     ![imagem pipeline airflow](https://raw.githubusercontent.com/Debora-Rodrigues-19/repo-projeto-final-ebac-44/refs/heads/main/pipeline-airflow-ebac-44.png)  
 
